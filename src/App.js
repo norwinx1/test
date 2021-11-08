@@ -2,64 +2,14 @@ import { useState } from 'react';
 import './App.css';
 
 function App() {
-  const [name, setName] = useState("");
   const [ga, setGa] = useState("");
   const [day, setDay] = useState(8);
   const [month, setMonth] = useState(11);
   const [year, setYear] = useState(2021);
-  const [rotation, setRotation] = useState("landscape");
+  const [rotation, setRotation] = useState("");
   const [bike, setBike] = useState(false);
   const [car, setCar] = useState(false);
   const [flash, setFlash] = useState('');
-  const map = new Map();
-  const ga1 = {
-    type: "GA Erwachsene 25-64/65 Jahre",
-    class: "2",
-    price: "3860"
-  }
-  const ga2 = {
-    type: "GA Erwachsene 25-64/65 Jahre",
-    class: "1",
-    price: "6300"
-  }
-  const ga3 = {
-    type: "GA Erwachsene 25-64/65 Jahre",
-    class: "2",
-    price: "340"
-  }
-  const ga4 = {
-    type: "GA Erwachsene 25-64/65 Jahre",
-    class: "1",
-    price: "545"
-  }
-  const ga5 = {
-    type: "GA Senior ab 64/65 Jahren",
-    class: "2",
-    price: "2880"
-  }
-  const ga6 = {
-    type: "GA Senior ab 64/65 Jahren",
-    class: "1",
-    price: "4840"
-  }
-  const ga7 = {
-    type: "GA Senior ab 64/65 Jahren",
-    class: "2",
-    price: "260"
-  }
-  const ga8 = {
-    type: "GA Senior ab 64/65 Jahren",
-    class: "1",
-    price: "430"
-  }
-  map.set(1, ga1);
-  map.set(2, ga2);
-  map.set(3, ga3);
-  map.set(4, ga4);
-  map.set(5, ga5);
-  map.set(6, ga6);
-  map.set(7, ga7);
-  map.set(8, ga8);
 
   /* Handler for radio button, 1a */
   function handleRadioButton(event) {
@@ -116,11 +66,14 @@ function App() {
         <br></br>
         <p>{bike ? "bike" : ""}</p>
         <p>{car ? "car" : ""}</p>
-                                    {/* Handler for select, 3a */}
-        <select class="form-select" onChange={(event) => setRotation(event.target.value)}>
-          <option value="landscape">Landscape</option>
-          <option value="portrait">Portrait</option>
-        </select>
+        <div className="form-check form-check-inline">                                                      {/* Handler for radio button, 3a */}
+          <input className="form-check-input" type="radio" name="rotation" id="rotation1" value="landscape" onChange={(event) => setRotation(event.target.value)} />
+          <label className="form-check-label" htmlFor="rotation1">Landscape</label>
+        </div>
+        <div className="form-check form-check-inline">                                                     {/* Handler for radio button, 3a */}
+          <input className="form-check-input" type="radio" name="rotation" id="rotation2" value="portrait" onChange={(event) => setRotation(event.target.value)} />
+          <label className="form-check-label" htmlFor="rotation2">Portrait</label>
+        </div>
         <p>{rotation}</p>
 
 
@@ -130,7 +83,7 @@ function App() {
         <span>Ich bestelle ein GA gültig ab </span>
         <input type="number" min="1" max="31" value={day} onChange={(event) => handleDay(event)}></input>
         <input type="number" min="1" max="12" value={month} onChange={(event) => handleMonth(event)}></input>
-        <input type="number" min="0" value={year} onChange={(event) => handleYear(event)}></input>
+        <input type="number" min="2021" value={year} onChange={(event) => handleYear(event)}></input>
         <br></br>
         <br></br>
         <table>
@@ -184,39 +137,39 @@ function App() {
             <td><input type="radio" name="ga" value="355" onChange={(event) => handleGA(event)}></input>CHF 355.-</td>
           </tr>
           <tr>
-            <td>GA Reisende mit einer Behinderung</td>
-            <td><input type="radio" name="ga" value="2480" onChange={(event) => handleGA(event)}></input>CHF 2480.-</td>
-            <td><input type="radio" name="ga" value="4050" onChange={(event) => handleGA(event)}></input>CHF 4050.-</td>
-            <td><input type="radio" name="ga" value="225" onChange={(event) => handleGA(event)}></input>CHF 225.-</td>
-            <td><input type="radio" name="ga" value="355" onChange={(event) => handleGA(event)}></input>CHF 355.-</td>
+            <td>GA Kind 6-16 Jahre</td>
+            <td><input type="radio" name="ga" value="1645" onChange={(event) => handleGA(event)}></input>CHF 1645.-</td>
+            <td><input type="radio" name="ga" value="2760" onChange={(event) => handleGA(event)}></input>CHF 2760.-</td>
+            <td><input type="radio" name="ga" value="160" onChange={(event) => handleGA(event)}></input>CHF 160.-</td>
+            <td><input type="radio" name="ga" value="250" onChange={(event) => handleGA(event)}></input>CHF 250.-</td>
           </tr>
           <tr>
-            <td>GA Reisende mit einer Behinderung</td>
-            <td><input type="radio" name="ga" value="2480" onChange={(event) => handleGA(event)}></input>CHF 2480.-</td>
-            <td><input type="radio" name="ga" value="4050" onChange={(event) => handleGA(event)}></input>CHF 4050.-</td>
-            <td><input type="radio" name="ga" value="225" onChange={(event) => handleGA(event)}></input>CHF 225.-</td>
-            <td><input type="radio" name="ga" value="355" onChange={(event) => handleGA(event)}></input>CHF 355.-</td>
+            <td>GA Duo Partner</td>
+            <td><input type="radio" name="ga" value="2700" onChange={(event) => handleGA(event)}></input>CHF 2700.-</td>
+            <td><input type="radio" name="ga" value="4340" onChange={(event) => handleGA(event)}></input>CHF 4340.-</td>
+            <td><input type="radio" name="ga" value="245" onChange={(event) => handleGA(event)}></input>CHF 245.-</td>
+            <td><input type="radio" name="ga" value="380" onChange={(event) => handleGA(event)}></input>CHF 380.-</td>
           </tr>
           <tr>
-            <td>GA Reisende mit einer Behinderung</td>
-            <td><input type="radio" name="ga" value="2480" onChange={(event) => handleGA(event)}></input>CHF 2480.-</td>
-            <td><input type="radio" name="ga" value="4050" onChange={(event) => handleGA(event)}></input>CHF 4050.-</td>
-            <td><input type="radio" name="ga" value="225" onChange={(event) => handleGA(event)}></input>CHF 225.-</td>
-            <td><input type="radio" name="ga" value="355" onChange={(event) => handleGA(event)}></input>CHF 355.-</td>
+            <td>GA Familia Kind 6-16 Jahre</td>
+            <td><input type="radio" name="ga" value="680" onChange={(event) => handleGA(event)}></input>CHF 680.-</td>
+            <td><input type="radio" name="ga" value="2760" onChange={(event) => handleGA(event)}></input>CHF 2760.-</td>
+            <td><input type="radio" name="ga" value="75" onChange={(event) => handleGA(event)}></input>CHF 75.-</td>
+            <td><input type="radio" name="ga" value="250" onChange={(event) => handleGA(event)}></input>CHF 250.-</td>
           </tr>
           <tr>
-            <td>GA Reisende mit einer Behinderung</td>
-            <td><input type="radio" name="ga" value="2480" onChange={(event) => handleGA(event)}></input>CHF 2480.-</td>
-            <td><input type="radio" name="ga" value="4050" onChange={(event) => handleGA(event)}></input>CHF 4050.-</td>
-            <td><input type="radio" name="ga" value="225" onChange={(event) => handleGA(event)}></input>CHF 225.-</td>
-            <td><input type="radio" name="ga" value="355" onChange={(event) => handleGA(event)}></input>CHF 355.-</td>
+            <td>GA Familia Jugend 16-25 Jahre</td>
+            <td><input type="radio" name="ga" value="925" onChange={(event) => handleGA(event)}></input>CHF 925.-</td>
+            <td><input type="radio" name="ga" value="2790" onChange={(event) => handleGA(event)}></input>CHF 2790.-</td>
+            <td><input type="radio" name="ga" value="95" onChange={(event) => handleGA(event)}></input>CHF 95.-</td>
+            <td><input type="radio" name="ga" value="255" onChange={(event) => handleGA(event)}></input>CHF 255.-</td>
           </tr>
           <tr>
-            <td>GA Reisende mit einer Behinderung</td>
-            <td><input type="radio" name="ga" value="2480" onChange={(event) => handleGA(event)}></input>CHF 2480.-</td>
-            <td><input type="radio" name="ga" value="4050" onChange={(event) => handleGA(event)}></input>CHF 4050.-</td>
-            <td><input type="radio" name="ga" value="225" onChange={(event) => handleGA(event)}></input>CHF 225.-</td>
-            <td><input type="radio" name="ga" value="355" onChange={(event) => handleGA(event)}></input>CHF 355.-</td>
+            <td>GA Familia Partner</td>
+            <td><input type="radio" name="ga" value="2180" onChange={(event) => handleGA(event)}></input>CHF 2180.-</td>
+            <td><input type="radio" name="ga" value="3520" onChange={(event) => handleGA(event)}></input>CHF 3520.-</td>
+            <td><input type="radio" name="ga" value="200" onChange={(event) => handleGA(event)}></input>CHF 200.-</td>
+            <td><input type="radio" name="ga" value="310" onChange={(event) => handleGA(event)}></input>CHF 310.-</td>
           </tr>
         </table>
       </header>
