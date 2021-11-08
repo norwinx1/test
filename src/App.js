@@ -12,13 +12,13 @@ function App() {
   const [course, setCourse] = useState('');
 
   function handleInputChange(event) {
-    if (event.target.name == "vehicle1") {
+    if (event.target.name === "vehicle1") {
       setBike(!bike);
     }
-    if (event.target.name == "vehicle2") {
+    if (event.target.name === "vehicle2") {
       setCar(!car);
     }
-    if (event.target.name == "vehicle3") {
+    if (event.target.name === "vehicle3") {
       setBoat(!boat);
     }
   }
@@ -38,22 +38,25 @@ function App() {
       <header className="App-header">
         <input id="name" type="text" value={name} onChange={(event) => setName(event.target.value)}></input>
         <p>{name}</p>
-        <input id="toogle" type="button" value={toogle} onClick={() => setToggle(!toogle)}></input>
+        <input id="toogle" type="button" class="button" value={toogle} onClick={() => setToggle(!toogle)}></input>
         <br></br>
-        <input id="toogle" type="button" value={counter} onClick={() => setCounter(counter + 1)}></input>
+        <input id="toogle" type="button" class="button" value={counter} onClick={() => setCounter(counter + 1)}></input>
         <br></br>
-        <select onChange={(event) => setNumber(event.target.value)}>
+        <select class="form-select" onChange={(event) => setNumber(event.target.value)}>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
         </select>
         <p>Selected number: {number}</p>
-        <label for="vehicle1"> I have a bike</label>
         <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" onClick={(event) => handleInputChange(event)}></input>
-        <label for="vehicle2"> I have a car</label>
+        <label htmlFor="vehicle1"> I have a bike</label>
+        <br></br>
         <input type="checkbox" id="vehicle2" name="vehicle2" value="Car" onClick={(event) => handleInputChange(event)}></input>
-        <label for="vehicle3"> I have a boat</label>
+        <label htmlFor="vehicle2"> I have a car</label>
+        <br></br>
         <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat" onClick={(event) => handleInputChange(event)}></input>
+        <label htmlFor="vehicle3"> I have a boat</label>
+        <br></br>
         <p>{bike ? "bike" : ""}</p>
         <p>{car ? "car" : ""}</p>
         <p>{boat ? "boat" : ""}</p>
@@ -70,7 +73,7 @@ function App() {
           <label className="form-check-label" htmlFor="inlineRadio3">Angular Kurs</label>
         </div>
         <p>{course}</p>
-        <button onClick={() => handleSubmit()}>Submit</button>
+        <input type="button" value="Submit" onClick={() => handleSubmit()}></input>
       </header>
     </div>
   );
