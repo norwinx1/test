@@ -15,10 +15,16 @@ function App() {
     if (event.target.name == "vehicle1") {
       setBike(!bike);
     }
+    if (event.target.name == "vehicle2") {
+      setCar(!car);
+    }
+    if (event.target.name == "vehicle3") {
+      setBoat(!boat);
+    }
   }
 
   function handleSubmit() {
-    alert(name + toogle + counter + number + bike + course);
+    alert(name + ", " + toogle + ", " + counter + ", " + number + ", " + bike + ", " + course);
     setName("");
     setToggle(true);
     setCounter(0);
@@ -31,23 +37,26 @@ function App() {
     <div className="App">
       <header className="App-header">
         <input id="name" type="text" value={name} onChange={(event) => setName(event.target.value)}></input>
-        <span>{name}</span>
+        <p>{name}</p>
         <input id="toogle" type="button" value={toogle} onClick={() => setToggle(!toogle)}></input>
-        <input id="toogle" type="button" value="+1" onClick={() => setCounter(counter + 1)}></input>
-        <p>{counter}</p>
+        <br></br>
+        <input id="toogle" type="button" value={counter} onClick={() => setCounter(counter + 1)}></input>
+        <br></br>
         <select onChange={(event) => setNumber(event.target.value)}>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
         </select>
-        <p>{number}</p>
+        <p>Selected number: {number}</p>
+        <label for="vehicle1"> I have a bike</label>
         <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" onClick={(event) => handleInputChange(event)}></input>
-        <label for="vehicle1"> I have a bike</label><br></br>
-        <input type="checkbox" id="vehicle2" name="vehicle2" value="Car"></input>
-        <label for="vehicle2"> I have a car</label><br></br>
-        <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat"></input>
+        <label for="vehicle2"> I have a car</label>
+        <input type="checkbox" id="vehicle2" name="vehicle2" value="Car" onClick={(event) => handleInputChange(event)}></input>
         <label for="vehicle3"> I have a boat</label>
-        <p>{bike ? "true" : "false"}</p>
+        <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat" onClick={(event) => handleInputChange(event)}></input>
+        <p>{bike ? "bike" : ""}</p>
+        <p>{car ? "car" : ""}</p>
+        <p>{boat ? "boat" : ""}</p>
         <div className="form-check form-check-inline">
           <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="react" onChange={event => setCourse(event.target.value)}/>
           <label className="form-check-label" htmlFor="inlineRadio1">React Kurs</label>
